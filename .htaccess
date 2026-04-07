@@ -1,0 +1,5 @@
+RewriteEngine On
+
+# Redirect www → non-www
+RewriteCond %{HTTP_HOST} ^www\.carbolabs\.com\.bd$ [NC]
+RewriteRule ^(.*)$ https://carbolabs.com.bd/$1 [L,R=301]

@@ -1,0 +1,9 @@
+Array
+(
+    [pdf] => pdfs/soda ash.pdf
+    [name] => Asad
+    [email] => mdasadujjaman97@gmail.com
+    [mobile] => 01711353546
+    [company] => Carbolabs Corporation
+    [message] => asasa
+)

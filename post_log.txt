@@ -1,0 +1,9 @@
+Array
+(
+    [pdf] => pdfs/Polymer.pdf
+    [name] => Asad jaman
+    [email] => alamintraders2013@gmail.com
+    [mobile] => 01711353546
+    [company] => Al-Amin traders
+    [message] => asasa
+)

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+    <!-- HOME -->
+    <url>
+        <loc>https://carbolabs.com.bd/</loc>
+        <priority>1.0</priority>
+    </url>
+
+    <!-- MAIN PAGES -->
+    <url>
+        <loc>https://carbolabs.com.bd/index.html</loc>
+        <priority>1.0</priority>
+    </url>
+
+    <url>
+        <loc>https://carbolabs.com.bd/basicchem.html</loc>
+        <priority>0.90</priority>
+    </url>
+
+    <url>
+        <loc>https://carbolabs.com.bd/ro-water-treatment.html</loc>
+        <priority>0.90</priority>
+    </url>
+
+    <url>
+        <loc>https://carbolabs.com.bd/boiler-water-treatment.html</loc>
+        <priority>0.90</priority>
+    </url>
+
+    <url>
+        <loc>https://carbolabs.com.bd/cooling-tower.html</loc>
+        <priority>0.90</priority>
+    </url>
+
+    <url>
+        <loc>https://carbolabs.com.bd/waste-water.html</loc>
+        <priority>0.90</priority>
+    </url>
+
+    <url>
+        <loc>https://carbolabs.com.bd/desalination.html</loc>
+        <priority>0.85</priority>
+    </url>
+
+    <url>
+        <loc>https://carbolabs.com.bd/analytical.html</loc>
+        <priority>0.85</priority>
+    </url>
+
+    <url>
+        <loc>https://carbolabs.com.bd/petro-field.html</loc>
+        <priority>0.85</priority>
+    </url>
+
+    <url>
+        <loc>https://carbolabs.com.bd/specialty.html</loc>
+        <priority>0.85</priority>
+    </url>
+
+    <!-- FORMS -->
+    <url>
+        <loc>https://carbolabs.com.bd/common-form.html</loc>
+        <priority>0.50</priority>
+    </url>
+
+    <url>
+        <loc>https://carbolabs.com.bd/order.html</loc>
+        <priority>0.50</priority>
+    </url>
+
+</urlset>
