@@ -1945,9 +1945,7 @@
                             <img src="./Image/al alamin traders full logo photshop copy.png" alt="Al-Amin Traders Logo">
                         </span>
                     </div>
-                    <p class="text-[#FFC933] text-sm italic font-bold mb-4">
-                        "Al-Amin defines great trust, We deserve it."
-                    </p>
+                    <p id="footerSlogan" class="text-[#FFC933] text-sm italic font-bold mb-4">&nbsp;</p>
                     <p class="text-gray-400 leading-relaxed mb-4">
                         Al-Amin Traders delivers quality industrial and business solutions with innovation and
                         integrity.
@@ -2400,7 +2398,39 @@
         });
     </script>
 
+    <!-- Footer slogan typewriter loop -->
+    <script>
+        (function () {
+            var el = document.getElementById('footerSlogan');
+            if (!el) return;
+            var text = '"Al-Amin defines great trust, We deserve it."';
+            var i = 0;
+            var typing = true;
 
+            function tick() {
+                if (typing) {
+                    i++;
+                    el.textContent = text.slice(0, i);
+                    if (i >= text.length) {
+                        typing = false;
+                        setTimeout(tick, 2000);
+                        return;
+                    }
+                    setTimeout(tick, 55);
+                } else {
+                    i--;
+                    el.textContent = text.slice(0, i);
+                    if (i <= 0) {
+                        typing = true;
+                        setTimeout(tick, 600);
+                        return;
+                    }
+                    setTimeout(tick, 30);
+                }
+            }
+            tick();
+        })();
+    </script>
 
 </body>
 
