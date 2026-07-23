@@ -242,6 +242,7 @@
 
 
                 <li><a href="./index.html#programs" class="hover:text-[#0077c2]">Programs</a></li>
+                <li><a href="./blog.html" class="hover:text-[#0077c2]">Blog</a></li>
                 <li><a href="./index.html#faq" class="hover:text-[#0077c2]">FAQ</a></li>
                 <li><a href="./index.html#contact" class="hover:text-[#0077c2]">Contact</a></li>
             </ul>
@@ -347,6 +348,7 @@
 
                 <!--End Knowledge button creating same as product button-->
                 <li><a href="./index.html#programs" class="hover:text-[#0077c2]">Programs</a></li>
+                <li><a href="./blog.html" class="hover:text-[#0077c2]">Blog</a></li>
                 <li><a href="./index.html#faq" class="hover:text-[#0077c2] transition hover:scale-110">FAQ</a></li>
                 <li><a href="./index.html#contact" class="hover:text-[#0077c2] transition hover:scale-110">Contact</a>
                 </li>
@@ -1509,6 +1511,132 @@
         })();
     </script>
 
+    <style>
+      #insights.insights-section { background: #f5f7fa; padding: 80px 20px 90px; text-align: center; }
+      #insights .section-tag { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: #1a6fc4; margin-bottom: 14px; }
+      #insights.insights-section h2 { font-size: 38px; font-weight: 900; color: #1a6fc4; line-height: 1.18; margin-bottom: 10px; }
+      #insights.insights-section h2::after { content: ''; display: block; width: 70px; height: 3px; background: #1a6fc4; margin: 13px auto 0; border-radius: 2px; }
+      #insights .subtitle { font-size: 15.5px; color: #666; max-width: 620px; margin: 20px auto 52px; line-height: 1.75; }
+      #insights .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; max-width: 1140px; margin: 0 auto 52px; text-align: left; }
+      #insights .blog-card { background: #ffffff; border-radius: 16px; overflow: hidden; border: 1px solid #e4eaf3; transition: transform 0.3s ease, box-shadow 0.3s ease; display: flex; flex-direction: column; }
+      #insights .blog-card:hover { transform: translateY(-6px); box-shadow: 0 18px 48px rgba(26,111,196,0.13); }
+      #insights .card-img { width: 100%; height: 210px; overflow: hidden; position: relative; }
+      #insights .card-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease; }
+      #insights .blog-card:hover .card-img img { transform: scale(1.05); }
+      #insights .card-img .cat-badge { position: absolute; top: 14px; left: 14px; font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #0A1628; background: #C9A84C; padding: 4px 10px; border-radius: 4px; z-index: 2; }
+      #insights .card-body { padding: 24px 24px 28px; display: flex; flex-direction: column; flex: 1; }
+      #insights .card-meta { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+      #insights .card-meta time { font-size: 12px; color: #999; font-weight: 600; letter-spacing: 0.3px; }
+      #insights .card-meta .dot { width: 3px; height: 3px; background: #ccc; border-radius: 50%; flex-shrink: 0; }
+      #insights .card-meta .read-time { font-size: 12px; color: #bbb; }
+      #insights .blog-card h3 { font-size: 17.5px; font-weight: 800; color: #0A1628; line-height: 1.35; margin-bottom: 11px; transition: color 0.2s ease; }
+      #insights .blog-card:hover h3 { color: #1a6fc4; }
+      #insights .blog-card p { font-size: 13.5px; color: #6b7280; line-height: 1.68; flex: 1; margin-bottom: 20px; }
+      #insights .read-more { display: inline-flex; align-items: center; gap: 6px; font-size: 13.5px; font-weight: 700; color: #1a6fc4; text-decoration: none; letter-spacing: 0.2px; transition: gap 0.2s ease, color 0.2s ease; margin-top: auto; }
+      #insights .read-more svg { width: 15px; height: 15px; transition: transform 0.2s ease; }
+      #insights .read-more:hover { color: #0e4f8e; gap: 10px; }
+      #insights .read-more:hover svg { transform: translateX(3px); }
+      #insights .view-all-wrap { text-align: center; }
+      #insights .btn-view-all { display: inline-flex; align-items: center; gap: 8px; padding: 14px 34px; background: transparent; color: #1a6fc4; border: 2px solid #1a6fc4; border-radius: 8px; font-size: 14.5px; font-weight: 700; text-decoration: none; letter-spacing: 0.3px; transition: background 0.22s ease, color 0.22s ease, transform 0.22s ease; }
+      #insights .btn-view-all:hover { background: #1a6fc4; color: #ffffff; transform: translateY(-2px); }
+      #insights .btn-view-all svg { width: 16px; height: 16px; transition: transform 0.2s ease; }
+      #insights .btn-view-all:hover svg { transform: translateX(4px); }
+      @media (max-width: 900px) { #insights .blog-grid { grid-template-columns: repeat(2, 1fr); } }
+      @media (max-width: 580px) {
+        #insights .blog-grid { grid-template-columns: 1fr; }
+        #insights.insights-section h2 { font-size: 28px; }
+      }
+    </style>
+
+    <section id="insights" class="insights-section">
+
+        <span class="section-tag">News &amp; Industry Insights</span>
+        <h2>Latest Insights</h2>
+        <p class="subtitle">
+            Stay informed on DGDP procurement updates, defence supply industry developments and Al-Amin Traders company news.
+        </p>
+
+        <div class="blog-grid">
+
+            <article class="blog-card">
+                <div class="card-img">
+                    <span class="cat-badge">Procurement Guide</span>
+                    <img src="https://images.pexels.com/photos/10666081/pexels-photo-10666081.jpeg?w=800&amp;q=80" alt="DGDP Procurement Guide for International Suppliers" loading="lazy">
+                </div>
+                <div class="card-body">
+                    <div class="card-meta">
+                        <time datetime="2026-07-15">July 15, 2026</time>
+                        <span class="dot"></span>
+                        <span class="read-time">5 min read</span>
+                    </div>
+                    <h3>How DGDP Procurement Works: A Guide for International Suppliers</h3>
+                    <p>A step-by-step breakdown of how Bangladesh's Directorate General of Defence Purchase manages government procurement and what international manufacturers need to know to enter this market through an enlisted supplier.</p>
+                    <a href="./blog-dgdp-procurement-guide.html" class="read-more">
+                        Read Article
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+                        </svg>
+                    </a>
+                </div>
+            </article>
+
+            <article class="blog-card">
+                <div class="card-img">
+                    <span class="cat-badge">Naval Supply</span>
+                    <img src="https://images.pexels.com/photos/32863926/pexels-photo-32863926.jpeg?w=800&amp;q=80" alt="Naval Supply to NSSD Bangladesh Navy" loading="lazy">
+                </div>
+                <div class="card-body">
+                    <div class="card-meta">
+                        <time datetime="2026-06-28">June 28, 2026</time>
+                        <span class="dot"></span>
+                        <span class="read-time">4 min read</span>
+                    </div>
+                    <h3>Supplying Naval Components to NSSD: Requirements and Standards</h3>
+                    <p>Everything international marine equipment manufacturers need to know about supplying to Bangladesh Navy's Naval Store Sub Depot through the formal DGDP procurement framework — from specification standards to documentation requirements.</p>
+                    <a href="./blog-nssd-naval-supply.html" class="read-more">
+                        Read Article
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+                        </svg>
+                    </a>
+                </div>
+            </article>
+
+            <article class="blog-card">
+                <div class="card-img">
+                    <span class="cat-badge">Pharmaceutical</span>
+                    <img src="https://images.pexels.com/photos/8657301/pexels-photo-8657301.jpeg?w=800&amp;q=80" alt="EDCL Pharmaceutical Supply Requirements" loading="lazy">
+                </div>
+                <div class="card-body">
+                    <div class="card-meta">
+                        <time datetime="2026-06-10">June 10, 2026</time>
+                        <span class="dot"></span>
+                        <span class="read-time">6 min read</span>
+                    </div>
+                    <h3>EDCL Pharmaceutical Procurement: API and Excipient Supply Requirements</h3>
+                    <p>Active Pharmaceutical Ingredient suppliers looking to enter Bangladesh's government pharmaceutical market through EDCL need to meet specific WHO-GMP quality standards and DGDP documentation requirements — here is what you need to know.</p>
+                    <a href="./blog-edcl-pharmaceutical-supply.html" class="read-more">
+                        Read Article
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+                        </svg>
+                    </a>
+                </div>
+            </article>
+
+        </div><!-- /blog-grid -->
+
+        <div class="view-all-wrap">
+            <a href="./blog.html" class="btn-view-all">
+                View All Articles
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+                </svg>
+            </a>
+        </div>
+
+    </section>
+
     <!-- get in touch -->
     <style>
       #contact.contact-section { position: relative; background: #0A1628; padding: 96px 20px 104px; overflow: hidden; }
@@ -1817,6 +1945,7 @@
                         <li><a href="#hero" class="hover:text-[#00aaff] transition">Home</a></li>
                         <li><a href="#about" class="hover:text-[#00aaff] transition">About</a></li>
                         <li><a href="#programs" class="hover:text-[#00aaff] transition">Programs</a></li>
+                        <li><a href="./blog.html" class="hover:text-[#00aaff] transition">Blog</a></li>
                         <li><a href="#faq" class="hover:text-[#00aaff] transition">FAQ</a></li>
                         <li><a href="./common-form.html" class="hover:text-[#00aaff] transition">Contact</a></li>
                     </ul>

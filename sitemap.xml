@@ -19,6 +19,42 @@
     </url>
 
     <url>
+        <loc>https://al-amin.com.bd/blog.html</loc>
+        <priority>0.80</priority>
+    </url>
+
+    <!-- BLOG ARTICLES -->
+    <url>
+        <loc>https://al-amin.com.bd/blog-dgdp-procurement-guide.html</loc>
+        <priority>0.65</priority>
+    </url>
+
+    <url>
+        <loc>https://al-amin.com.bd/blog-nssd-naval-supply.html</loc>
+        <priority>0.65</priority>
+    </url>
+
+    <url>
+        <loc>https://al-amin.com.bd/blog-edcl-pharmaceutical-supply.html</loc>
+        <priority>0.65</priority>
+    </url>
+
+    <url>
+        <loc>https://al-amin.com.bd/blog-bof-cod-military-workshop.html</loc>
+        <priority>0.65</priority>
+    </url>
+
+    <url>
+        <loc>https://al-amin.com.bd/blog-foreign-business-setup.html</loc>
+        <priority>0.65</priority>
+    </url>
+
+    <url>
+        <loc>https://al-amin.com.bd/blog-dgdp-12-categories.html</loc>
+        <priority>0.60</priority>
+    </url>
+
+    <url>
         <loc>https://al-amin.com.bd/military-ordnance.html</loc>
         <priority>0.90</priority>
     </url>
