@@ -6,6 +6,7 @@ use PHPMailer\PHPMailer\Exception;
 require 'phpmailer/src/Exception.php';
 require 'phpmailer/src/PHPMailer.php';
 require 'phpmailer/src/SMTP.php';
+require __DIR__ . '/mail-config.php';
 
 header("Content-Type: text/plain");
 
@@ -13,12 +14,12 @@ $mail = new PHPMailer(true);
 
 try {
     $mail->isSMTP();
-    $mail->Host       = 'al-amin.com.bd';
+    $mail->Host       = $mail_host;
     $mail->SMTPAuth   = true;
-    $mail->Username   = 'info@al-amin.com.bd';
-    $mail->Password   = 'Chanmia@9127!';
-    $mail->SMTPSecure = 'ssl';
-    $mail->Port       = 465;
+    $mail->Username   = $mail_username;
+    $mail->Password   = $mail_password;
+    $mail->SMTPSecure = $mail_smtp_secure;
+    $mail->Port       = $mail_port;
 
     $mail->setFrom('info@al-amin.com.bd', 'Data Sheet Request');
     $mail->addAddress('info@al-amin.com.bd');
