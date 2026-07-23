@@ -84,19 +84,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 
     <!-- ================= NAVBAR ================= -->
+        <style>
+      @keyframes navLogoFloat {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-3px); }
+      }
+      .nav-logo-animate { display: inline-block; animation: navLogoFloat 3.6s ease-in-out infinite; }
+      #navSlogan { min-height: 1rem; line-height: 1rem; }
+    </style>
+
     <nav class="fixed top-0 left-0 w-full bg-white shadow z-50">
         <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-3">
             <!-- Left: Logo + Name -->
             <div class="flex items-center space-x-16">
-    <a href="./index.html" class="flex items-center">
-        <img src="./Image/al alamin traders full logo photshop copy.png" alt="Al-Amin Traders Logo"
-            class="h-14 w-auto transition-transform duration-300 hover:scale-105">
-
-        <span
-            class="font-semibold text-lg text-[#0077c2] inline-block ml-2 transform transition-transform duration-300 hover:scale-105 hover:text-[#005b99]">
-            AL-AMIN TRADERS
-        </span>
-    </a>
+    <a href="./index.html" class="flex flex-col items-center md:items-start">
+                    <span class="nav-logo-animate">
+                        <img src="./Image/al alamin traders full logo photshop copy.png" alt="Al-Amin Traders Logo"
+                            class="h-14 w-auto transition-transform duration-300 hover:scale-105">
+                    </span>
+                    <span id="navSlogan" class="text-[10px] italic font-semibold text-[#0077c2]">&nbsp;</span>
+                </a>
 </div>
 
             
@@ -818,6 +825,40 @@ function closeModal() {
 </style>
 
 
+
+    <script>
+        function startSloganTypewriter(elId, text) {
+            var el = document.getElementById(elId);
+            if (!el) return;
+            var i = 0;
+            var typing = true;
+
+            function tick() {
+                if (typing) {
+                    i++;
+                    el.textContent = text.slice(0, i);
+                    if (i >= text.length) {
+                        typing = false;
+                        setTimeout(tick, 2000);
+                        return;
+                    }
+                    setTimeout(tick, 55);
+                } else {
+                    i--;
+                    el.textContent = text.slice(0, i);
+                    if (i <= 0) {
+                        typing = true;
+                        setTimeout(tick, 600);
+                        return;
+                    }
+                    setTimeout(tick, 30);
+                }
+            }
+            tick();
+        }
+
+        startSloganTypewriter('navSlogan', 'Al-Amin defines great trust, We deserve it.');
+    </script>
 
 </body>
 

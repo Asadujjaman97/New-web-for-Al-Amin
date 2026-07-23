@@ -99,14 +99,25 @@
     </noscript>
     <!-- End Google Tag Manager (noscript) -->
 
+    <style>
+      @keyframes navLogoFloat {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-3px); }
+      }
+      .nav-logo-animate { display: inline-block; animation: navLogoFloat 3.6s ease-in-out infinite; }
+      #navSlogan { min-height: 1rem; line-height: 1rem; }
+    </style>
+
     <nav class="fixed top-0 left-0 w-full bg-white shadow z-50">
         <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-3">
 
             <!-- Logo -->
-            <a href="./index.html" class="flex items-center space-x-3">
-                <img src="./Image/al alamin traders full logo photshop copy.png" class="h-14 transition hover:scale-110"
-                    alt="Logo">
-
+            <a href="./index.html" class="flex flex-col items-center md:items-start">
+                <span class="nav-logo-animate">
+                    <img src="./Image/al alamin traders full logo photshop copy.png" class="h-14 transition hover:scale-110"
+                        alt="Logo">
+                </span>
+                <span id="navSlogan" class="text-[10px] italic font-semibold text-[#0077c2]">&nbsp;</span>
             </a>
 
             <!-- Hamburger -->
@@ -369,7 +380,7 @@
 
     <!-- ================= HERO CAROUSEL ================= -->
     <!-- ================= HERO CAROUSEL ================= -->
-    <section id="hero" class="relative pt-[80px]">
+    <section id="hero" class="relative pt-[98px]">
         <div class="carousel relative overflow-hidden h-[85vh]">
             <!-- Slide 1 Soldier Aiming to front vew -->
             <div class="carousel-slide absolute inset-0 bg-cover bg-center flex items-center justify-center text-center text-white"
@@ -1945,7 +1956,8 @@
                             <img src="./Image/al alamin traders full logo photshop copy.png" alt="Al-Amin Traders Logo">
                         </span>
                     </div>
-                    <p id="footerSlogan" class="text-[#FFC933] text-sm italic font-bold mb-4">&nbsp;</p>
+                    <p id="footerSlogan" class="text-[#FFC933] text-sm italic font-bold mb-4"
+                        style="min-height: 2.5rem; line-height: 1.25rem;">&nbsp;</p>
                     <p class="text-gray-400 leading-relaxed mb-4">
                         Al-Amin Traders delivers quality industrial and business solutions with innovation and
                         integrity.
@@ -2398,12 +2410,11 @@
         });
     </script>
 
-    <!-- Footer slogan typewriter loop -->
+    <!-- Slogan typewriter loop (footer + navbar) -->
     <script>
-        (function () {
-            var el = document.getElementById('footerSlogan');
+        function startSloganTypewriter(elId, text) {
+            var el = document.getElementById(elId);
             if (!el) return;
-            var text = '"Al-Amin defines great trust, We deserve it."';
             var i = 0;
             var typing = true;
 
@@ -2429,7 +2440,10 @@
                 }
             }
             tick();
-        })();
+        }
+
+        startSloganTypewriter('footerSlogan', '"Al-Amin defines great trust, We deserve it."');
+        startSloganTypewriter('navSlogan', 'Al-Amin defines great trust, We deserve it.');
     </script>
 
 </body>
