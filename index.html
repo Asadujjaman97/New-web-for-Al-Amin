@@ -383,6 +383,43 @@
 
     <!-- ================= HERO CAROUSEL ================= -->
     <!-- ================= HERO CAROUSEL ================= -->
+    <style>
+      #hero .carousel-slide {
+        opacity: 0;
+        z-index: 1;
+        pointer-events: none;
+        transition: opacity 1.3s cubic-bezier(0.45, 0, 0.15, 1);
+        will-change: opacity, transform;
+      }
+      #hero .carousel-slide.active {
+        opacity: 1;
+        z-index: 2;
+        pointer-events: auto;
+        animation: heroKenBurns 6.2s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+      }
+      #hero .carousel-slide > div {
+        transition: transform 0.6s ease, opacity 0.6s ease;
+        transform: translateY(14px);
+        opacity: 0;
+      }
+      #hero .carousel-slide.active > div {
+        transform: translateY(0);
+        opacity: 1;
+        transition-delay: 0.35s;
+      }
+      @keyframes heroKenBurns {
+        from { transform: scale(1); }
+        to { transform: scale(1.07); }
+      }
+      #hero #prev, #hero #next {
+        opacity: 0.75;
+        transition: opacity 0.25s ease, background-color 0.25s ease, transform 0.25s ease;
+      }
+      #hero .carousel:hover #prev, #hero .carousel:hover #next { opacity: 1; }
+      #hero #prev:hover, #hero #next:hover { transform: translateY(-50%) scale(1.08); }
+      #hero .dot { transition: background-color 0.4s ease, transform 0.4s ease; }
+      #hero .dot.bg-white { transform: scale(1.25); }
+    </style>
     <section id="hero" class="relative pt-[98px]">
         <div class="carousel relative overflow-hidden h-[85vh]">
             <!-- Slide 1 Soldier Aiming to front vew -->
@@ -2094,23 +2131,47 @@
 
     <!-- ================= SCRIPTS ================= -->
     <script>
-        // Hero auto-slide JS
+        // Hero auto-slide JS — smooth cross-fade + Ken Burns zoom
         const slides = document.querySelectorAll('.carousel-slide');
         const dots = document.querySelectorAll('.dot');
         let current = 0;
+        let heroTimer = null;
 
         function showSlide(index) {
-            slides.forEach((s, i) => s.classList.toggle('hidden', i !== index));
+            slides.forEach((s, i) => {
+                if (i === index) {
+                    // Restart the Ken Burns animation cleanly on every activation
+                    s.classList.remove('active');
+                    void s.offsetWidth; // force reflow
+                    s.classList.add('active');
+                } else {
+                    s.classList.remove('active');
+                }
+            });
             dots.forEach((d, i) => d.classList.toggle('bg-white', i === index));
             dots.forEach((d, i) => d.classList.toggle('bg-white/30', i !== index));
         }
 
-        document.getElementById('next').onclick = () => { current = (current + 1) % slides.length; showSlide(current); };
-        document.getElementById('prev').onclick = () => { current = (current - 1 + slides.length) % slides.length; showSlide(current); };
-        dots.forEach((dot, i) => dot.addEventListener('click', () => { current = i; showSlide(current); }));
+        function goToSlide(index) {
+            current = index;
+            showSlide(current);
+            restartAutoplay();
+        }
 
-        setInterval(() => { current = (current + 1) % slides.length; showSlide(current); }, 5000);
+        function restartAutoplay() {
+            clearInterval(heroTimer);
+            heroTimer = setInterval(() => {
+                current = (current + 1) % slides.length;
+                showSlide(current);
+            }, 5500);
+        }
+
+        document.getElementById('next').onclick = () => goToSlide((current + 1) % slides.length);
+        document.getElementById('prev').onclick = () => goToSlide((current - 1 + slides.length) % slides.length);
+        dots.forEach((dot, i) => dot.addEventListener('click', () => goToSlide(i)));
+
         showSlide(current);
+        restartAutoplay();
 
         // Scroll fade-up animation
         const fadeEls = document.querySelectorAll('.fade-up');
