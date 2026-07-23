@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://carbolabs.com.bd/sitemap.xml
+Sitemap: https://al-amin.com.bd/sitemap.xml

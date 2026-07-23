@@ -1,4 +1,15 @@
 
+/* Main navigation — vertical alignment fix so every top-level item
+   (including the Supply Guide mega-menu trigger) sits on the same baseline */
+.main-navigation {
+    display: flex;
+    align-items: center;
+}
+.main-navigation > li {
+    display: flex;
+    align-items: center;
+}
+
 /*#product-menu {*/
 /*    position: absolute;*/
 /*    width: auto;*/

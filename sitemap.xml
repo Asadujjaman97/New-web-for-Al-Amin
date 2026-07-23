@@ -3,69 +3,245 @@
 
     <!-- HOME -->
     <url>
-        <loc>https://carbolabs.com.bd/</loc>
+        <loc>https://al-amin.com.bd/</loc>
         <priority>1.0</priority>
     </url>
 
     <!-- MAIN PAGES -->
     <url>
-        <loc>https://carbolabs.com.bd/index.html</loc>
+        <loc>https://al-amin.com.bd/index.html</loc>
         <priority>1.0</priority>
     </url>
 
     <url>
-        <loc>https://carbolabs.com.bd/basicchem.html</loc>
+        <loc>https://al-amin.com.bd/chemicals.html</loc>
         <priority>0.90</priority>
     </url>
 
     <url>
-        <loc>https://carbolabs.com.bd/ro-water-treatment.html</loc>
+        <loc>https://al-amin.com.bd/military-ordnance.html</loc>
         <priority>0.90</priority>
     </url>
 
     <url>
-        <loc>https://carbolabs.com.bd/boiler-water-treatment.html</loc>
-        <priority>0.90</priority>
-    </url>
-
-    <url>
-        <loc>https://carbolabs.com.bd/cooling-tower.html</loc>
-        <priority>0.90</priority>
-    </url>
-
-    <url>
-        <loc>https://carbolabs.com.bd/waste-water.html</loc>
-        <priority>0.90</priority>
-    </url>
-
-    <url>
-        <loc>https://carbolabs.com.bd/desalination.html</loc>
+        <loc>https://al-amin.com.bd/military-supplies.html</loc>
         <priority>0.85</priority>
     </url>
 
     <url>
-        <loc>https://carbolabs.com.bd/analytical.html</loc>
+        <loc>https://al-amin.com.bd/ordnance-supplies.html</loc>
         <priority>0.85</priority>
     </url>
 
     <url>
-        <loc>https://carbolabs.com.bd/petro-field.html</loc>
+        <loc>https://al-amin.com.bd/naval-supplies.html</loc>
+        <priority>0.90</priority>
+    </url>
+
+    <url>
+        <loc>https://al-amin.com.bd/pharmaceutical-supplies.html</loc>
+        <priority>0.90</priority>
+    </url>
+
+    <url>
+        <loc>https://al-amin.com.bd/mega-projects.html</loc>
         <priority>0.85</priority>
     </url>
 
     <url>
-        <loc>https://carbolabs.com.bd/specialty.html</loc>
+        <loc>https://al-amin.com.bd/industrial-consultancy.html</loc>
         <priority>0.85</priority>
+    </url>
+
+    <!-- SUPPLY GUIDE: MILITARY & ORDNANCE (1.1-1.7) -->
+    <url>
+        <loc>https://al-amin.com.bd/ammunition-ordnance.html</loc>
+        <priority>0.70</priority>
+    </url>
+
+    <url>
+        <loc>https://al-amin.com.bd/military-workshop.html</loc>
+        <priority>0.70</priority>
+    </url>
+
+    <url>
+        <loc>https://al-amin.com.bd/military-vehicles.html</loc>
+        <priority>0.70</priority>
+    </url>
+
+    <url>
+        <loc>https://al-amin.com.bd/military-field-equipment.html</loc>
+        <priority>0.70</priority>
+    </url>
+
+    <url>
+        <loc>https://al-amin.com.bd/military-clothing.html</loc>
+        <priority>0.70</priority>
+    </url>
+
+    <url>
+        <loc>https://al-amin.com.bd/military-electronics.html</loc>
+        <priority>0.70</priority>
+    </url>
+
+    <url>
+        <loc>https://al-amin.com.bd/explosives-demolition.html</loc>
+        <priority>0.70</priority>
+    </url>
+
+    <!-- SUPPLY GUIDE: NAVAL SUPPLIES / NSSD (2.1-2.7) -->
+    <url>
+        <loc>https://al-amin.com.bd/marine-engineering.html</loc>
+        <priority>0.70</priority>
+    </url>
+
+    <url>
+        <loc>https://al-amin.com.bd/naval-deck-equipment.html</loc>
+        <priority>0.70</priority>
+    </url>
+
+    <url>
+        <loc>https://al-amin.com.bd/marine-electrical.html</loc>
+        <priority>0.70</priority>
+    </url>
+
+    <url>
+        <loc>https://al-amin.com.bd/marine-coatings.html</loc>
+        <priority>0.70</priority>
+    </url>
+
+    <url>
+        <loc>https://al-amin.com.bd/ship-safety.html</loc>
+        <priority>0.70</priority>
+    </url>
+
+    <url>
+        <loc>https://al-amin.com.bd/naval-workshop.html</loc>
+        <priority>0.70</priority>
+    </url>
+
+    <url>
+        <loc>https://al-amin.com.bd/vessel-maintenance.html</loc>
+        <priority>0.70</priority>
+    </url>
+
+    <!-- SUPPLY GUIDE: PHARMACEUTICAL / EDCL (3.1-3.6) -->
+    <url>
+        <loc>https://al-amin.com.bd/pharmaceutical-apis.html</loc>
+        <priority>0.70</priority>
+    </url>
+
+    <url>
+        <loc>https://al-amin.com.bd/pharmaceutical-excipients.html</loc>
+        <priority>0.70</priority>
+    </url>
+
+    <url>
+        <loc>https://al-amin.com.bd/pharma-packaging.html</loc>
+        <priority>0.70</priority>
+    </url>
+
+    <url>
+        <loc>https://al-amin.com.bd/pharma-lab-equipment.html</loc>
+        <priority>0.70</priority>
+    </url>
+
+    <url>
+        <loc>https://al-amin.com.bd/pharma-manufacturing.html</loc>
+        <priority>0.70</priority>
+    </url>
+
+    <url>
+        <loc>https://al-amin.com.bd/medical-devices.html</loc>
+        <priority>0.70</priority>
+    </url>
+
+    <!-- SUPPLY GUIDE: MEGA PROJECTS (4.1-4.6) -->
+    <url>
+        <loc>https://al-amin.com.bd/defence-infrastructure.html</loc>
+        <priority>0.70</priority>
+    </url>
+
+    <url>
+        <loc>https://al-amin.com.bd/industrial-plant-setup.html</loc>
+        <priority>0.70</priority>
+    </url>
+
+    <url>
+        <loc>https://al-amin.com.bd/water-treatment-projects.html</loc>
+        <priority>0.70</priority>
+    </url>
+
+    <url>
+        <loc>https://al-amin.com.bd/power-energy.html</loc>
+        <priority>0.70</priority>
+    </url>
+
+    <url>
+        <loc>https://al-amin.com.bd/technology-comms.html</loc>
+        <priority>0.70</priority>
+    </url>
+
+    <url>
+        <loc>https://al-amin.com.bd/foreign-investment.html</loc>
+        <priority>0.70</priority>
+    </url>
+
+    <!-- SUPPLY GUIDE: CONSULTANCY (5.1-5.6) -->
+    <url>
+        <loc>https://al-amin.com.bd/defence-procurement.html</loc>
+        <priority>0.70</priority>
+    </url>
+
+    <url>
+        <loc>https://al-amin.com.bd/supply-chain.html</loc>
+        <priority>0.70</priority>
+    </url>
+
+    <url>
+        <loc>https://al-amin.com.bd/technical-engineering.html</loc>
+        <priority>0.70</priority>
+    </url>
+
+    <url>
+        <loc>https://al-amin.com.bd/regulatory-compliance.html</loc>
+        <priority>0.70</priority>
+    </url>
+
+    <url>
+        <loc>https://al-amin.com.bd/project-management.html</loc>
+        <priority>0.70</priority>
+    </url>
+
+    <url>
+        <loc>https://al-amin.com.bd/foreign-business-setup.html</loc>
+        <priority>0.70</priority>
+    </url>
+
+    <!-- SEO LANDING PAGES (LEGACY - HIGH SEARCH RANKING, KEPT LIVE) -->
+    <url>
+        <loc>https://al-amin.com.bd/boiler-chemical-supplier-bangladesh.html</loc>
+        <priority>0.60</priority>
+    </url>
+
+    <url>
+        <loc>https://al-amin.com.bd/cooling-tower-chemical-suppliers-bangladesh.html</loc>
+        <priority>0.60</priority>
+    </url>
+
+    <url>
+        <loc>https://al-amin.com.bd/top-boiler-chemical-suppliers-bangladesh.html</loc>
+        <priority>0.60</priority>
     </url>
 
     <!-- FORMS -->
     <url>
-        <loc>https://carbolabs.com.bd/common-form.html</loc>
+        <loc>https://al-amin.com.bd/common-form.html</loc>
         <priority>0.50</priority>
     </url>
 
     <url>
-        <loc>https://carbolabs.com.bd/order.html</loc>
+        <loc>https://al-amin.com.bd/order.html</loc>
         <priority>0.50</priority>
     </url>
 

@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $date       = $_POST['date'] ?? '';
     $notes      = $_POST['notes'] ?? '';
 
-    $to = "sales@carbolabs.com.bd, info@carbolabs.com.bd";
+    $to = "sales@al-amin.com.bd, info@al-amin.com.bd";
     $subject = "New Chemical Order Received";
 
     $message = "
@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $notes
     ";
 
-    $headers = "From: noreply@carbolabs.com.bd\r\n";
+    $headers = "From: noreply@al-amin.com.bd\r\n";
     $headers .= "Reply-To: $email\r\n";
 
     if (mail($to, $subject, $message, $headers)) {

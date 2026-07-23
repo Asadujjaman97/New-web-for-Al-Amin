@@ -13,15 +13,15 @@ $mail = new PHPMailer(true);
 
 try {
     $mail->isSMTP();
-    $mail->Host       = 'carbolabs.com.bd';
+    $mail->Host       = 'al-amin.com.bd';
     $mail->SMTPAuth   = true;
-    $mail->Username   = 'info@carbolabs.com.bd';
+    $mail->Username   = 'info@al-amin.com.bd';
     $mail->Password   = 'Chanmia@9127!';
     $mail->SMTPSecure = 'ssl';
     $mail->Port       = 465;
 
-    $mail->setFrom('info@carbolabs.com.bd', 'Data Sheet Request');
-    $mail->addAddress('info@carbolabs.com.bd');
+    $mail->setFrom('info@al-amin.com.bd', 'Data Sheet Request');
+    $mail->addAddress('info@al-amin.com.bd');
 
     // Get form data safely
     $name    = htmlspecialchars(trim($_POST['name'] ?? ''));
