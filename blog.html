@@ -624,6 +624,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     </div>
 </li>
+                <!-- Desktop Strategic Investment Projects Dropdown (Hover Based) -->
+                <li class="relative group">
+                    <button class="flex items-center gap-2 hover:text-[#0077c2]">
+                        Strategic Investment Projects
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.17l3.71-3.94a.75.75 0 111.08 1.04l-4.25
+                               4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                    <ul class="absolute left-0 mt-2 w-80 bg-white shadow-xl rounded-lg opacity-0 scale-95 pointer-events-none
+                           group-hover:opacity-100 group-hover:scale-100 group-hover:pointer-events-auto
+                           transition-all duration-300 ease-out z-[9999]" style="top:100%; transform-origin: top left;">
+                        <li><a href="./investment-lifepo4-battery.html" class="block px-4 py-2 hover:bg-[#0077c2] hover:text-white rounded-t-lg">Bangladesh LiFePO₄ Battery Manufacturing Project</a></li>
+                        <li><a href="./investment-dry-fruit-export.html" class="block px-4 py-2 hover:bg-[#0077c2] hover:text-white">Bangladesh Premium Dry Fruit Processing &amp; Export Project</a></li>
+                        <li><a href="./investment-land-co-development.html" class="block px-4 py-2 hover:bg-[#0077c2] hover:text-white">Land Investment &amp; Co-Development Project</a></li>
+                        <li><a href="./investment-makkah-madinah-hospitality.html" class="block px-4 py-2 hover:bg-[#0077c2] hover:text-white rounded-b-lg">Makkah &amp; Madinah Hospitality Investment Project</a></li>
+                    </ul>
+                </li>
+
                 <li><a href="./index.html#programs" class="hover:text-[#0077c2]">Programs</a></li>
                 <li><a href="./blog.html" class="hover:text-[#0077c2]">Blog</a></li>
                 <li><a href="./index.html#faq" class="hover:text-[#0077c2]">FAQ</a></li>
@@ -704,6 +723,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <li><a href="./foreign-business-setup.html" class="block px-4 py-2 hover:bg-[#0077c2] hover:text-white">Foreign Business Setup Consultancy</a></li>
 
 </ul>
+                <!-- Mobile Strategic Investment Projects Dropdown -->
+                <li class="w-full text-center">
+                    <button id="mobile-investment-btn"
+                        class="w-full flex justify-center items-center gap-2 py-2 hover:text-[#0077c2]">
+                        Strategic Investment Projects
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd"
+                                d="M5.23 7.21a.75.75 0 011.06.02L10 11.17l3.71-3.94a.75.75 0 111.08 1.04l-4.25
+                                   4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                    <ul id="mobile-investment-menu" class="hidden flex-col space-y-1 mt-1">
+                        <li><a href="./investment-lifepo4-battery.html" class="block px-4 py-2 hover:bg-[#0077c2] hover:text-white">Bangladesh LiFePO₄ Battery Manufacturing Project</a></li>
+                        <li><a href="./investment-dry-fruit-export.html" class="block px-4 py-2 hover:bg-[#0077c2] hover:text-white">Bangladesh Premium Dry Fruit Processing &amp; Export Project</a></li>
+                        <li><a href="./investment-land-co-development.html" class="block px-4 py-2 hover:bg-[#0077c2] hover:text-white">Land Investment &amp; Co-Development Project</a></li>
+                        <li><a href="./investment-makkah-madinah-hospitality.html" class="block px-4 py-2 hover:bg-[#0077c2] hover:text-white">Makkah &amp; Madinah Hospitality Investment Project</a></li>
+                    </ul>
+                </li>
+
                 <li><a href="./index.html#programs" class="hover:text-[#0077c2]">Programs</a></li>
                 <li><a href="./blog.html" class="hover:text-[#0077c2]">Blog</a></li>
                 <li><a href="./index.html#faq" class="hover:text-[#0077c2]">FAQ</a></li>
@@ -1526,6 +1565,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         menuToggle.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
+        });
+
+        /* Mobile Strategic Investment Projects */
+        const mobileInvestmentBtn = document.getElementById("mobile-investment-btn");
+        const mobileInvestmentMenu = document.getElementById("mobile-investment-menu");
+
+        mobileInvestmentBtn?.addEventListener("click", () => {
+            mobileInvestmentMenu.classList.toggle("hidden");
         });
     </script>
 

@@ -179,6 +179,27 @@
         <priority>0.85</priority>
     </url>
 
+    <!-- STRATEGIC INVESTMENT PROJECTS -->
+    <url>
+        <loc>https://al-amin.com.bd/investment-lifepo4-battery.html</loc>
+        <priority>0.80</priority>
+    </url>
+
+    <url>
+        <loc>https://al-amin.com.bd/investment-dry-fruit-export.html</loc>
+        <priority>0.80</priority>
+    </url>
+
+    <url>
+        <loc>https://al-amin.com.bd/investment-land-co-development.html</loc>
+        <priority>0.80</priority>
+    </url>
+
+    <url>
+        <loc>https://al-amin.com.bd/investment-makkah-madinah-hospitality.html</loc>
+        <priority>0.80</priority>
+    </url>
+
     <!-- SUPPLY GUIDE: MILITARY & ORDNANCE (1.1-1.7) -->
     <url>
         <loc>https://al-amin.com.bd/ammunition-ordnance.html</loc>
