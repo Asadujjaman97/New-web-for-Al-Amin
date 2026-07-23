@@ -18,6 +18,7 @@
     <meta name="description" content="Al-Amin Traders is a DGDP enlisted supplier providing Marine Engineering Components for Bangladesh's defence, naval, pharmaceutical and government institutions.">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@24.8.2/build/css/intlTelInput.css">
     <style>
         body { font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
     </style>
@@ -211,18 +212,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     </div>
 </li>
-                <!-- Desktop Strategic Investment Projects Dropdown (Hover Based) -->
-                <li class="relative group">
-                    <button class="flex items-center gap-2 hover:text-[#0077c2] focus:outline-none" style="white-space: normal;">
+                <!-- Desktop Strategic Investment Projects Dropdown (Gated — click required, verified via OTP) -->
+                <li class="relative">
+                    <button id="investmentDropdownBtn" type="button" class="flex items-center gap-2 hover:text-[#0077c2] focus:outline-none" style="white-space: normal;">
                         Strategic Investment Projects
                         <svg class="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.17l3.71-3.94a.75.75 0 111.08 1.04l-4.25
                                4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
                         </svg>
                     </button>
-                    <div class="absolute left-0 top-full w-80 bg-white shadow-2xl rounded-lg
+                    <div id="investmentDropdownPanel" class="absolute left-0 top-full w-80 bg-white shadow-2xl rounded-lg
                            opacity-0 scale-95 translate-y-1 pointer-events-none
-                           group-hover:opacity-100 group-hover:scale-100 group-hover:translate-y-0 group-hover:pointer-events-auto
                            transition-all duration-300 ease-out z-[9999]" style="transform-origin: top left;">
                         <ul class="py-2">
                             <li><a href="./investment-lifepo4-battery.html" class="block px-4 py-2 text-sm hover:bg-[#0077c2] hover:text-white">Bangladesh LiFePO₄ Battery Manufacturing Project</a></li>
@@ -547,12 +547,46 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             mobileMenu.classList.toggle('hidden');
         });
 
-        /* Mobile Strategic Investment Projects */
+        /* Mobile Strategic Investment Projects (gated) */
         const mobileInvestmentBtn = document.getElementById("mobile-investment-btn");
         const mobileInvestmentMenu = document.getElementById("mobile-investment-menu");
 
         mobileInvestmentBtn?.addEventListener("click", () => {
-            mobileInvestmentMenu.classList.toggle("hidden");
+            if (window.isInvestmentAccessVerified && window.isInvestmentAccessVerified()) {
+                mobileInvestmentMenu.classList.toggle("hidden");
+            } else if (window.openInvestmentGate) {
+                window.openInvestmentGate('mobile');
+            }
+        });
+
+        /* Desktop Strategic Investment Projects (gated) */
+        const investmentDropdownBtn = document.getElementById("investmentDropdownBtn");
+        const investmentDropdownPanel = document.getElementById("investmentDropdownPanel");
+
+        function openInvestmentDropdownPanel() {
+            investmentDropdownPanel.classList.add("opacity-100", "scale-100", "translate-y-0", "pointer-events-auto");
+            investmentDropdownPanel.classList.remove("opacity-0", "scale-95", "translate-y-1", "pointer-events-none");
+        }
+        function closeInvestmentDropdownPanel() {
+            investmentDropdownPanel.classList.remove("opacity-100", "scale-100", "translate-y-0", "pointer-events-auto");
+            investmentDropdownPanel.classList.add("opacity-0", "scale-95", "translate-y-1", "pointer-events-none");
+        }
+
+        investmentDropdownBtn?.addEventListener("click", (e) => {
+            e.preventDefault();
+            if (window.isInvestmentAccessVerified && window.isInvestmentAccessVerified()) {
+                const isOpen = investmentDropdownPanel.classList.contains("opacity-100");
+                isOpen ? closeInvestmentDropdownPanel() : openInvestmentDropdownPanel();
+            } else if (window.openInvestmentGate) {
+                window.openInvestmentGate('desktop');
+            }
+        });
+
+        document.addEventListener("click", (e) => {
+            if (investmentDropdownBtn && investmentDropdownPanel &&
+                !investmentDropdownBtn.contains(e.target) && !investmentDropdownPanel.contains(e.target)) {
+                closeInvestmentDropdownPanel();
+            }
         });
     </script>
 
@@ -656,6 +690,270 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         }
 
         startSloganTypewriter('navSlogan', 'Al-Amin defines great trust, We deserve it.');
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@24.8.2/build/js/intlTelInput.min.js"></script>
+    <!-- ================= STRATEGIC INVESTMENT ACCESS GATE ================= -->
+    <style>
+      #investmentGateModal .ig-panel { background: #0A1628; border: 1px solid rgba(255,255,255,0.09); border-radius: 20px; padding: 40px 32px; position: relative; overflow: hidden; }
+      #investmentGateModal .ig-panel::before { content: ''; position: absolute; top: 0; left: 10%; width: 80%; height: 2px; background: linear-gradient(90deg, transparent, #C9A84C 40%, #1a6fc4 70%, transparent); border-radius: 0 0 2px 2px; }
+      #investmentGateModal h2 { font-size: 20px; font-weight: 800; color: #ffffff; margin-bottom: 6px; }
+      #investmentGateModal .ig-sub { font-size: 13px; color: rgba(255,255,255,0.48); margin-bottom: 24px; line-height: 1.6; }
+      #investmentGateModal .fg { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+      #investmentGateModal .fg label { font-size: 10.5px; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; color: rgba(255,255,255,0.38); }
+      #investmentGateModal .fg input, #investmentGateModal .fg textarea { width: 100%; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.09); border-radius: 10px; padding: 12px 14px; font-size: 14px; color: #fff; font-family: inherit; outline: none; transition: border-color 0.2s ease, background 0.2s ease; }
+      #investmentGateModal .fg input::placeholder, #investmentGateModal .fg textarea::placeholder { color: rgba(255,255,255,0.18); }
+      #investmentGateModal .fg input:focus, #investmentGateModal .fg textarea:focus { border-color: rgba(201,168,76,0.55); background: rgba(201,168,76,0.04); }
+      #investmentGateModal .btn-ig { width: 100%; padding: 13px 20px; background: #C9A84C; color: #0A1628; border: none; border-radius: 10px; font-size: 14.5px; font-weight: 800; cursor: pointer; transition: background 0.2s ease, transform 0.2s ease; margin-top: 6px; }
+      #investmentGateModal .btn-ig:hover { background: #b89540; transform: translateY(-1px); }
+      #investmentGateModal .btn-ig:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+      #investmentGateModal .btn-ig-ghost { width: 100%; padding: 10px; background: transparent; color: rgba(255,255,255,0.55); border: none; font-size: 13px; font-weight: 600; cursor: pointer; margin-top: 8px; text-decoration: underline; }
+      #investmentGateModal .btn-ig-ghost:disabled { opacity: 0.4; cursor: not-allowed; text-decoration: none; }
+      #investmentGateModal .ig-close { position: absolute; top: 16px; right: 18px; background: transparent; border: none; color: rgba(255,255,255,0.45); font-size: 22px; line-height: 1; cursor: pointer; z-index: 2; }
+      #investmentGateModal .ig-close:hover { color: #fff; }
+      #investmentGateModal .ig-countdown { text-align: center; font-size: 13px; color: rgba(255,255,255,0.55); margin: 12px 0; }
+      #investmentGateModal .ig-countdown strong { color: #C9A84C; }
+      #investmentGateModal .ig-msg { font-size: 13px; text-align: center; padding: 10px; border-radius: 8px; margin-bottom: 14px; }
+      #investmentGateModal .ig-msg.error { background: rgba(239,68,68,0.12); color: #f87171; border: 1px solid rgba(239,68,68,0.3); }
+      #investmentGateModal .ig-msg.success { background: rgba(37,211,102,0.12); color: #25D366; border: 1px solid rgba(37,211,102,0.3); }
+      #investmentGateModal .iti { width: 100%; }
+      #investmentGateModal .iti input.iti__tel-input { width: 100%; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.09); border-radius: 10px; padding: 12px 14px; font-size: 14px; color: #fff; font-family: inherit; outline: none; }
+      #investmentGateModal .iti__selected-country { background: transparent !important; }
+      #investmentGateModal .iti__selected-country-primary { color: #fff; }
+      #investmentGateModal .iti__arrow-icon { fill: rgba(255,255,255,0.55); }
+      #investmentGateModal .iti__dropdown-content { background: #0A1628; border: 1px solid rgba(255,255,255,0.15); color: #fff; }
+      #investmentGateModal .iti__search-input { background: rgba(255,255,255,0.08); color: #fff; border: 1px solid rgba(255,255,255,0.15); }
+      #investmentGateModal .iti__country { color: #fff; }
+      #investmentGateModal .iti__country.iti__highlight { background-color: rgba(201,168,76,0.18); }
+    </style>
+
+    <div id="investmentGateModal" class="fixed inset-0 bg-black/40 backdrop-blur-sm flex justify-center items-center hidden z-[10000] p-4 sm:p-6">
+      <div class="ig-panel w-full max-w-md relative">
+        <button type="button" class="ig-close" onclick="window.closeInvestmentGate()" aria-label="Close">&times;</button>
+
+        <!-- STEP 1: Details -->
+        <div id="igStep1">
+          <h2>Strategic Investment Access</h2>
+          <p class="ig-sub">These project profiles are shared with verified partners only. Enter your details to receive a one-time access code by email.</p>
+          <div id="igStep1Msg"></div>
+
+          <form id="investmentGateForm">
+            <div class="fg">
+              <label>Your Name</label>
+              <input type="text" name="name" required placeholder="Full name">
+            </div>
+            <div class="fg">
+              <label>Your Email</label>
+              <input type="email" name="email" required placeholder="email@example.com">
+            </div>
+            <div class="fg">
+              <label>Mobile Number</label>
+              <input type="tel" id="igPhone" name="mobile" required placeholder="1XXX XXX XXX">
+            </div>
+            <div class="fg">
+              <label>Company / Fund Name</label>
+              <input type="text" name="company" placeholder="Optional">
+            </div>
+            <div class="fg">
+              <label>Message</label>
+              <textarea name="message" rows="3" placeholder="Optional — e.g. which project interests you"></textarea>
+            </div>
+
+            <button type="submit" class="btn-ig" id="igSendBtn">Send Verification Code</button>
+          </form>
+        </div>
+
+        <!-- STEP 2: OTP -->
+        <div id="igStep2" class="hidden">
+          <h2>Enter Verification Code</h2>
+          <p class="ig-sub">We've emailed a 6-digit code to <strong id="igEmailDisplay"></strong>.</p>
+          <div id="igStep2Msg"></div>
+
+          <div class="fg">
+            <label>Verification Code</label>
+            <input type="text" id="igOtpInput" inputmode="numeric" maxlength="6" placeholder="6-digit code">
+          </div>
+
+          <div class="ig-countdown">Code expires in <strong id="igCountdown">60</strong>s</div>
+
+          <button type="button" class="btn-ig" id="igVerifyBtn">Verify &amp; View Projects</button>
+          <button type="button" class="btn-ig-ghost" id="igResendBtn" disabled>Resend Code</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+    (function () {
+        let igIti = null;
+        let igCountdownTimer = null;
+        let igTriggerContext = 'desktop'; // 'desktop' | 'mobile'
+
+        window.isInvestmentAccessVerified = function () {
+            return sessionStorage.getItem('investmentAccessVerified') === 'true';
+        };
+
+        function igInitPhoneInput() {
+            if (igIti) return;
+            const el = document.getElementById("igPhone");
+            if (!el || !window.intlTelInput) return;
+            igIti = window.intlTelInput(el, {
+                initialCountry: "bd",
+                separateDialCode: true,
+                loadUtilsOnInit: "https://cdn.jsdelivr.net/npm/intl-tel-input@24.8.2/build/js/utils.js"
+            });
+        }
+
+        function igShowMsg(elId, text, type) {
+            const el = document.getElementById(elId);
+            el.innerHTML = text ? `<div class="ig-msg ${type}">${text}</div>` : "";
+        }
+
+        function igResetToStep1() {
+            document.getElementById("igStep1").classList.remove("hidden");
+            document.getElementById("igStep2").classList.add("hidden");
+            igShowMsg("igStep1Msg", "", "");
+            igShowMsg("igStep2Msg", "", "");
+            document.getElementById("igOtpInput").value = "";
+            clearInterval(igCountdownTimer);
+        }
+
+        function igStartCountdown() {
+            let seconds = 60;
+            const display = document.getElementById("igCountdown");
+            const verifyBtn = document.getElementById("igVerifyBtn");
+            const resendBtn = document.getElementById("igResendBtn");
+
+            display.textContent = seconds;
+            verifyBtn.disabled = false;
+            resendBtn.disabled = true;
+
+            clearInterval(igCountdownTimer);
+            igCountdownTimer = setInterval(() => {
+                seconds--;
+                display.textContent = Math.max(seconds, 0);
+                if (seconds <= 0) {
+                    clearInterval(igCountdownTimer);
+                    verifyBtn.disabled = true;
+                    resendBtn.disabled = false;
+                    igShowMsg("igStep2Msg", "Code expired. Click Resend Code to get a new one.", "error");
+                }
+            }, 1000);
+        }
+
+        async function igSendOtp() {
+            const form = document.getElementById("investmentGateForm");
+            const emailInput = form.querySelector('input[name="email"]');
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (!emailPattern.test(emailInput.value.trim())) {
+                igShowMsg("igStep1Msg", "Please enter a valid email address.", "error");
+                return false;
+            }
+            if (igIti && !igIti.isValidNumber()) {
+                igShowMsg("igStep1Msg", "Please enter a valid mobile number for the selected country.", "error");
+                return false;
+            }
+            if (igIti) {
+                document.getElementById("igPhone").value = igIti.getNumber();
+            }
+
+            const formData = new FormData(form);
+            const sendBtn = document.getElementById("igSendBtn");
+            sendBtn.disabled = true;
+            sendBtn.textContent = "Sending...";
+
+            try {
+                const res = await fetch("send_investment_otp.php", { method: "POST", body: formData });
+                const result = await res.json();
+
+                if (result.status === "success") {
+                    document.getElementById("igEmailDisplay").textContent = emailInput.value.trim();
+                    document.getElementById("igStep1").classList.add("hidden");
+                    document.getElementById("igStep2").classList.remove("hidden");
+                    igStartCountdown();
+                    return true;
+                } else {
+                    igShowMsg("igStep1Msg", result.message || "Something went wrong. Please try again.", "error");
+                    return false;
+                }
+            } catch (err) {
+                igShowMsg("igStep1Msg", "Network error. Please try again.", "error");
+                return false;
+            } finally {
+                sendBtn.disabled = false;
+                sendBtn.textContent = "Send Verification Code";
+            }
+        }
+
+        document.getElementById("investmentGateForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+            igSendOtp();
+        });
+
+        document.getElementById("igResendBtn").addEventListener("click", function () {
+            igShowMsg("igStep2Msg", "", "");
+            igSendOtp();
+        });
+
+        document.getElementById("igVerifyBtn").addEventListener("click", async function () {
+            const otp = document.getElementById("igOtpInput").value.trim();
+            if (!otp) {
+                igShowMsg("igStep2Msg", "Please enter the verification code.", "error");
+                return;
+            }
+
+            const verifyBtn = document.getElementById("igVerifyBtn");
+            verifyBtn.disabled = true;
+            verifyBtn.textContent = "Verifying...";
+
+            try {
+                const res = await fetch("verify_investment_otp.php", {
+                    method: "POST",
+                    body: new URLSearchParams({ otp })
+                });
+                const result = await res.json();
+
+                if (result.status === "success") {
+                    clearInterval(igCountdownTimer);
+                    sessionStorage.setItem('investmentAccessVerified', 'true');
+                    igShowMsg("igStep2Msg", "Verified! Opening Strategic Investment Projects...", "success");
+                    setTimeout(() => {
+                        window.closeInvestmentGate();
+                        if (igTriggerContext === 'mobile') {
+                            const mobileMenu = document.getElementById("mobile-investment-menu");
+                            if (mobileMenu) mobileMenu.classList.remove("hidden");
+                        } else {
+                            const panel = document.getElementById("investmentDropdownPanel");
+                            if (panel) {
+                                panel.classList.add("opacity-100", "scale-100", "translate-y-0", "pointer-events-auto");
+                                panel.classList.remove("opacity-0", "scale-95", "translate-y-1", "pointer-events-none");
+                            }
+                        }
+                    }, 900);
+                } else {
+                    igShowMsg("igStep2Msg", result.message || "Invalid code.", "error");
+                }
+            } catch (err) {
+                igShowMsg("igStep2Msg", "Network error. Please try again.", "error");
+            } finally {
+                verifyBtn.disabled = false;
+                verifyBtn.textContent = "Verify & View Projects";
+            }
+        });
+
+        window.openInvestmentGate = function (context) {
+            igTriggerContext = context || 'desktop';
+            igInitPhoneInput();
+            igResetToStep1();
+            document.getElementById("investmentGateForm").reset();
+            document.getElementById("investmentGateModal").classList.remove("hidden");
+        };
+
+        window.closeInvestmentGate = function () {
+            document.getElementById("investmentGateModal").classList.add("hidden");
+            clearInterval(igCountdownTimer);
+        };
+    })();
     </script>
 
 </body>
