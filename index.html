@@ -1908,6 +1908,26 @@
     <!-- ================= FOOTER ================= -->
     <!--<footer class="bg-gradient-to-r from-gray-900 via-slate-900 to-gray-800 text-gray-300 py-16 px-6">-->
 
+    <style>
+      @keyframes footerLogoFloat {
+        0%, 100% { transform: translateY(0) scale(1); filter: drop-shadow(0 0 6px rgba(0,170,255,0.15)); }
+        50% { transform: translateY(-6px) scale(1.03); filter: drop-shadow(0 0 18px rgba(0,170,255,0.45)); }
+      }
+      .footer-logo-chip {
+        display: inline-block;
+        background: #ffffff;
+        border-radius: 14px;
+        padding: 10px 16px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+        animation: footerLogoFloat 3.6s ease-in-out infinite;
+      }
+      .footer-logo-chip img {
+        display: block;
+        height: 44px;
+        width: auto;
+      }
+    </style>
+
     <!--animation setup-->
     <footer class="bg-gradient-to-r from-gray-900 via-slate-900 to-gray-800 text-gray-300 py-16 px-6"
         style="position: relative; overflow: hidden;">
@@ -1922,7 +1942,11 @@
 
                 <!-- About -->
                 <div class="text-center md:text-left">
-                    <h3 class="text-xl font-semibold text-white mb-4">About Al-Amin Traders </h3>
+                    <div class="mb-4 flex justify-center md:justify-start">
+                        <span class="footer-logo-chip">
+                            <img src="./Image/al alamin traders full logo photshop copy.png" alt="Al-Amin Traders Logo">
+                        </span>
+                    </div>
                     <p class="text-gray-400 leading-relaxed mb-4">
                         Al-Amin Traders delivers quality industrial and business solutions with innovation and
                         integrity.
@@ -2011,7 +2035,7 @@
 
 
 
-            <footer <!-- Bottom Bar -->
+            <div class="footer-bottom-bar"> <!-- Bottom Bar -->
                 <div class="text-center mt-12 border-t border-gray-700 pt-6 text-gray-500">
                     <div>
                         <p>&copy; 2025 <a href="./index.html"
@@ -2034,6 +2058,8 @@
 
 
         </div>
+
+    </div>
 
     </footer>
 
