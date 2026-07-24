@@ -1519,70 +1519,6 @@
                         </div>
                     </div>
 
-                    <!-- FAQ 9 -->
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <span class="q-text">What quality and certification standards are required?</span>
-                            <span class="q-icon">
-                                <svg viewBox="0 0 24 24" fill="none"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-                            </span>
-                        </div>
-                        <div class="faq-answer">
-                            <div class="faq-answer-inner">
-                                <span class="answer-badge">Quality &amp; Certification</span>
-                                <p>Each institution sets its own technical specifications. BOF and COD require products to meet military specifications (mil-spec) or the equivalent national/international standard applicable to that product. NSSD requires marine products to meet classification society or OEM standards. EDCL requires APIs and excipients to comply with BP, USP or IP pharmacopoeia standards and sources to hold WHO-GMP or equivalent manufacturing certification. Al-Amin Traders assists international suppliers in understanding and documenting compliance with the relevant standards before a tender submission is made.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- FAQ 10 -->
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <span class="q-text">How are delivery and import logistics handled?</span>
-                            <span class="q-icon">
-                                <svg viewBox="0 0 24 24" fill="none"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-                            </span>
-                        </div>
-                        <div class="faq-answer">
-                            <div class="faq-answer-inner">
-                                <span class="answer-badge">Delivery &amp; Logistics</span>
-                                <p>Delivery terms are specified in the procurement contract and typically require delivery to a nominated military installation or government store. Al-Amin Traders manages the import process including customs clearance, defence ministry import authorization where required, local transportation and delivery coordination. For controlled items including ammunition support materials and pharmaceutical APIs, we handle the import licensing and regulatory clearance through the applicable Bangladesh government authority. International suppliers ship under standard commercial export documentation with Al-Amin Traders acting as the Bangladesh importer of record.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- FAQ 11 -->
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <span class="q-text">What consultancy services do you offer to foreign companies?</span>
-                            <span class="q-icon">
-                                <svg viewBox="0 0 24 24" fill="none"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-                            </span>
-                        </div>
-                        <div class="faq-answer">
-                            <div class="faq-answer-inner">
-                                <span class="answer-badge">Category 5 — Industrial Consultancy</span>
-                                <p>Our Category 5 consultancy services are designed specifically for foreign companies seeking to establish a supply presence in Bangladesh's defence and government market. Services include defence procurement advisory and market entry strategy, supply chain and import logistics design, technical and engineering consultancy for product compliance, regulatory and DGDP enlistment compliance support, project management for large-scale supply programs, and foreign business setup consultancy covering agent agreement structures, joint ventures and local company registration for defence sector participation.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- FAQ 12 -->
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <span class="q-text">How do I request a quotation or start an inquiry?</span>
-                            <span class="q-icon">
-                                <svg viewBox="0 0 24 24" fill="none"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-                            </span>
-                        </div>
-                        <div class="faq-answer">
-                            <div class="faq-answer-inner">
-                                <span class="answer-badge">Start Your Inquiry</span>
-                                <p>To begin, contact Al-Amin Traders with a description of your product or service, the target institution or category you are interested in, and your company's export experience and certifications. We will review the fit with current or anticipated procurement demand and advise on the most effective approach for your specific product category. Inquiries can be submitted via the contact form on this website or directly by email to <a href="mailto:info@al-amin.com.bd">info@al-amin.com.bd</a>. We respond to all international procurement inquiries within two business days.</p>
-                            </div>
-                        </div>
-                    </div>
-
                 </div><!-- .faq-accordion -->
 
                 <!-- CTA row -->
@@ -1627,6 +1563,22 @@
                     }
                 });
             });
+
+            // Auto-close the open FAQ item once it scrolls out of view
+            let faqScrollTimeout;
+            window.addEventListener('scroll', function () {
+                clearTimeout(faqScrollTimeout);
+                faqScrollTimeout = setTimeout(() => {
+                    const activeItem = document.querySelector('#faq .faq-item.active');
+                    if (!activeItem) return;
+                    const rect = activeItem.getBoundingClientRect();
+                    const isVisible = rect.bottom > 0 && rect.top < window.innerHeight;
+                    if (!isVisible) {
+                        activeItem.classList.remove('active');
+                        activeItem.querySelector('.faq-answer').style.maxHeight = '0';
+                    }
+                }, 150);
+            }, { passive: true });
         })();
     </script>
 
