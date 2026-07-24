@@ -1424,7 +1424,7 @@
                     </div>
 
                     <!-- FAQ 3 -->
-                    <div class="faq-item active">
+                    <div class="faq-item">
                         <div class="faq-question">
                             <span class="q-text">How does the DGDP procurement process work?</span>
                             <span class="q-icon">
@@ -1545,6 +1545,8 @@
                 }
             });
 
+            let faqJustToggled = false;
+
             faqItems.forEach(item => {
                 const question = item.querySelector('.faq-question');
                 const answer = item.querySelector('.faq-answer');
@@ -1561,23 +1563,22 @@
                         item.classList.add('active');
                         answer.style.maxHeight = answer.scrollHeight + 'px';
                     }
+
+                    faqJustToggled = true;
                 });
             });
 
-            // Auto-close the open FAQ item once it scrolls out of view
+            // Auto-close whichever FAQ item is open as soon as the user scrolls
             let faqScrollTimeout;
             window.addEventListener('scroll', function () {
+                if (faqJustToggled) { faqJustToggled = false; return; }
                 clearTimeout(faqScrollTimeout);
                 faqScrollTimeout = setTimeout(() => {
                     const activeItem = document.querySelector('#faq .faq-item.active');
                     if (!activeItem) return;
-                    const rect = activeItem.getBoundingClientRect();
-                    const isVisible = rect.bottom > 0 && rect.top < window.innerHeight;
-                    if (!isVisible) {
-                        activeItem.classList.remove('active');
-                        activeItem.querySelector('.faq-answer').style.maxHeight = '0';
-                    }
-                }, 150);
+                    activeItem.classList.remove('active');
+                    activeItem.querySelector('.faq-answer').style.maxHeight = '0';
+                }, 120);
             }, { passive: true });
         })();
     </script>
