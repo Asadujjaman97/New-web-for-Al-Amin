@@ -1052,7 +1052,7 @@
             </div>
 
             <div class="supply-card video-fill">
-                <video class="card-video" src="Image/naval-on-the-sea.mp4" autoplay muted loop playsinline preload="none"></video>
+                <video class="card-video lazy-video" data-src="Image/naval-on-the-sea.mp4" muted loop playsinline preload="none"></video>
                 <div class="card-overlay overlay-navy"></div>
                 <div class="card-content">
                     <span class="badge">NSSD · Bangladesh Navy</span>
@@ -1167,7 +1167,7 @@
             </div>
 
             <div class="supply-card video-decor">
-                <video class="card-video" src="Image/boat-run-on-sunset.mp4" autoplay muted loop playsinline preload="none"></video>
+                <video class="card-video lazy-video" data-src="Image/boat-run-on-sunset.mp4" muted loop playsinline preload="none"></video>
                 <div class="card-overlay overlay-gold"></div>
             </div>
 
@@ -1280,7 +1280,7 @@
                 </div>
             </div> <!-- Card 7: decorative fill -->
             <div class="bg-white shadow rounded-2xl overflow-hidden relative lg:col-span-2 h-[180px]">
-                <video class="w-full h-full object-cover" src="./Image/bdmap.mp4" autoplay muted loop playsinline preload="none"></video>
+                <video class="w-full h-full object-cover lazy-video" data-src="./Image/bdmap.mp4" muted loop playsinline preload="none"></video>
             </div>
 
         </div>
@@ -2876,6 +2876,29 @@
             document.getElementById("investmentGateModal").classList.add("hidden");
             clearInterval(igCountdownTimer);
         };
+    })();
+    </script>
+
+    <!-- ================= LAZY-LOAD DECORATIVE VIDEOS ================= -->
+    <script>
+    (function () {
+        var lazyVideos = document.querySelectorAll('video.lazy-video[data-src]');
+        if (!('IntersectionObserver' in window)) {
+            lazyVideos.forEach(function (v) { v.src = v.dataset.src; v.play().catch(function () {}); });
+            return;
+        }
+        var videoObserver = new IntersectionObserver(function (entries, observer) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    var video = entry.target;
+                    video.src = video.dataset.src;
+                    video.load();
+                    video.play().catch(function () {});
+                    observer.unobserve(video);
+                }
+            });
+        }, { rootMargin: '200px' });
+        lazyVideos.forEach(function (v) { videoObserver.observe(v); });
     })();
     </script>
 
